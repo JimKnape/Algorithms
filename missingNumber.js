@@ -13,13 +13,11 @@ Follow up: Could you implement a solution using only O(1) extra space complexity
 
 
 var missingNumber = function(nums) {
-  nums.sort((a, b) => a - b);
-  if (nums[nums.length -1] !== nums.length) {
-    return nums.length;
-  };
+  // sum the values of num
+  let sum = 0;
   for (let i = 0; i < nums.length; i++) {
-      if (nums[i] !== i) {
-        return i;
-      }
+    sum += nums[i];
   }
+  // return the sum of nums - ((length of nums * length of nums plus 1) / 2)
+  return ((nums.length * (nums.length + 1)/ 2)) - sum;
 };
