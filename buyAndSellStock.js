@@ -28,11 +28,10 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 var maxProfit = function(prices) {
   let maxProfit = 0; 
-  for (let i = 0; i < prices.length - 1; i++) {
-    for (let j = i + 1; j < prices.length; j++){
-      let currentProfit = prices[j] - prices[i];
-      maxProfit = Math.max(maxProfit, currentProfit);
-    }
-  }  
+  let minPrice = Infinity;
+  for (let i = 0; i < prices.length; i++) {
+    minPrice = Math.min(minPrice, prices[i]);
+    maxProfit = Math.max(maxProfit, prices[i] - minPrice)
+  }
   return maxProfit;
 };
