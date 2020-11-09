@@ -26,16 +26,33 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 */
 
 var reverseLinkedList = function(head) {
-  let stack = [];
+  let prev = null;
   let curr = head;
-  while(curr) {
-    stack.push(curr.val);
-    curr = curr.next;
+  let next = null;
+  
+//[1,2,3,5,null]
+    
+  while (curr !== null) {
+    //save next
+    next = curr.next;
+    //reverse
+    curr.next = prev;
+    //advance prev and current
+    prev = curr;
+    curr = next;
+
   }
-  curr = head;
-  while (stack.length) {
-    curr.val = stack.pop();
-    curr = curr.next
-  }
-  return head;
+
+  // let stack = [];
+  // let curr = head;
+  // while(curr) {
+  //   stack.push(curr.val);
+  //   curr = curr.next;
+  // }
+  // curr = head;
+  // while (stack.length) {
+  //   curr.val = stack.pop();
+  //   curr = curr.next
+  // }
+  // return head;
 };
